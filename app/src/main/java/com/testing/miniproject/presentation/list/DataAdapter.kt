@@ -8,7 +8,13 @@ import com.testing.miniproject.R
 import com.testing.miniproject.data.localdb.MyData
 import kotlinx.android.synthetic.main.item_mydata_view.view.*
 
-class DataAdapter(var dataList :List<MyData>, var listener : Listener) : RecyclerView.Adapter<DataAdapter.Holder>() {
+class DataAdapter(private var listener : Listener) : RecyclerView.Adapter<DataAdapter.Holder>() {
+
+    var dataList : List<MyData> = arrayListOf()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         Holder(LayoutInflater.from(parent.context).inflate(R.layout.item_mydata_view, parent, false))
@@ -21,8 +27,6 @@ class DataAdapter(var dataList :List<MyData>, var listener : Listener) : Recycle
 
 
     class Holder(private val view : View) : RecyclerView.ViewHolder(view) {
-
-
         fun bind(data : MyData, listener: Listener) {
             when (data.activityType) {
                 "Meeting" -> view.ivIllustrator.setImageResource(R.drawable.ic_event)

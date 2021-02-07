@@ -6,10 +6,10 @@ import android.app.Dialog
 import android.app.ProgressDialog
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import com.testing.miniproject.R
 import com.testing.miniproject.data.localdb.MyData
 import com.testing.miniproject.databinding.ActivityDetailBinding
@@ -60,7 +60,7 @@ class DetailActivity : AppCompatActivity(), BaseComponentView.ChainListener{
     }
 
     private fun observeViewModel() {
-        dataViewModel.currentData.observe(this, Observer {
+        dataViewModel.currentData.observe(this, {
             currentData?.let {
                 showError("Success")
             }
@@ -70,17 +70,13 @@ class DetailActivity : AppCompatActivity(), BaseComponentView.ChainListener{
 
         })
 
-        dataViewModel.error.observe(this,
-            Observer {error ->
-                showError(error)
-            }
-        )
+        dataViewModel.error.observe(this,{error ->
+            showError(error)
+        })
 
-        dataViewModel.loading.observe(this,
-            Observer {
-                showProgress()
-            }
-        )
+        dataViewModel.loading.observe(this,{
+            showProgress()
+        })
     }
 
     @Suppress("DEPRECATION")
@@ -231,6 +227,8 @@ class DetailActivity : AppCompatActivity(), BaseComponentView.ChainListener{
                 lastUpdate = parseDateToString(Calendar.getInstance().time))
 
             dataViewModel.updatedData(data)
+        } else {
+            Toast.makeText(this, "Harap melengkapi form", Toast.LENGTH_SHORT).show()
         }
     }
 
