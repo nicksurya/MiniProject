@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="com.testing.miniproject.presentation.detail.DetailViewModel" />
+        <variable name="viewModel" type="com.testing.miniproject.presentation.detail.DetailViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_above="@id/btnSubmit">
+
+            <LinearLayout
+                android:id="@+id/llFormContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                tools:context=".presentation.detail.DetailActivity"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_rounded_5dp_gray"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="PERSONAL INFO"
+                        android:padding="8dp"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#e6e6e6"/>
+
+                    <com.testing.miniproject.presentation.detail.component.TextInputComponentView
+                        android:id="@+id/tcvName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:tag="tcvName"/>
+
+                    <com.testing.miniproject.presentation.detail.component.TextInputComponentView
+                        android:id="@+id/tcvDoB"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:tag="tcvDoB"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llProductContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_rounded_5dp_gray"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="PRODUCT SELECTION"
+                        android:padding="8dp"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#e6e6e6"/>
+
+                    <com.testing.miniproject.presentation.detail.component.SpinnerComponentView
+                        android:id="@+id/scvProduct"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:tag="scvProduct"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llInfoContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_rounded_5dp_gray"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="PRODUCT INFO"
+                        android:padding="8dp"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#e6e6e6"/>
+
+                    <com.testing.miniproject.presentation.detail.component.TextInputComponentView
+                        android:id="@+id/tcvProductCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="tcvProductCode"
+                        android:layout_margin="8dp"
+                        />
+
+                    <com.testing.miniproject.presentation.detail.component.SpinnerComponentView
+                        android:id="@+id/scvActivity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="scvActivity"
+                        android:layout_margin="8dp"
+                        />
+
+                    <com.testing.miniproject.presentation.detail.component.TextInputComponentView
+                        android:id="@+id/tcvPlace"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="tcvPlace"
+                        android:layout_margin="8dp"
+                        />
+
+                    <com.testing.miniproject.presentation.detail.component.TextInputComponentView
+                        android:id="@+id/tcvActivityDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="tcvActivityDate"
+                        android:layout_margin="8dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_margin="8dp">
+
+                        <com.testing.miniproject.presentation.detail.component.TextInputComponentView
+                            android:id="@+id/tcvActivityStartTime"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:tag="tcvActivityStartTime"/>
+
+                        <com.testing.miniproject.presentation.detail.component.TextInputComponentView
+                            android:id="@+id/tcvActivityEndTime"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:tag="tcvActivityEndTime"/>
+
+                    </LinearLayout>
+
+                    <com.testing.miniproject.presentation.detail.component.TextInputComponentView
+                        android:id="@+id/tcvPrice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="tcvPrice"
+                        android:layout_margin="8dp"
+                        />
+
+                    <com.testing.miniproject.presentation.detail.component.SpinnerComponentView
+                        android:id="@+id/scvDuration"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="scvDuration"
+                        android:layout_margin="8dp"
+                        />
+
+                    <com.testing.miniproject.presentation.detail.component.TextInputComponentView
+                        android:id="@+id/tcvPlanDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="tcvPlanDate"
+                        android:layout_margin="8dp"
+                        />
+
+                    <com.testing.miniproject.presentation.detail.component.TextInputComponentView
+                        android:id="@+id/tcvReason"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="tcvReason"
+                        android:layout_margin="8dp"
+                        />
+
+                    <com.testing.miniproject.presentation.detail.component.TextInputComponentView
+                        android:id="@+id/tcvNotes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="tcvNotes"
+                        android:layout_margin="8dp"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Simpan"
+            android:layout_margin="8dp"
+            android:layout_alignParentBottom="true"
+            />
+
+    </RelativeLayout>
+
+</layout>

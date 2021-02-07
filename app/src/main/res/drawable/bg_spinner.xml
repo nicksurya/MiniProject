@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <bitmap
+            android:gravity="center_vertical|right"
+            android:src="@drawable/ic_dropdown"/>
+    </item>
+    <item android:gravity="bottom">
+        <shape>
+            <size android:height=".75dp" />
+            <solid android:color="#99000000" />
+        </shape>
+    </item>
+</layer-list>
